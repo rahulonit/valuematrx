@@ -18,30 +18,30 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, color, textColor, style
     const colorScheme = useColorScheme();
     const theme = colorScheme || 'light';
 
-    let backgroundColor = Colors[theme].greenGreenColor;
-    let borderColor = Colors[theme].greenGreen500;
+    let backgroundColor = Colors[theme].GreenColor;
+    let borderColor = Colors[theme].Green500;
     let textColorVariant = textColor || Colors[theme].white;
 
     switch (color) {
         case 'yellow':
-            backgroundColor = Colors[theme].yellowYellowColor;
-            borderColor = Colors[theme].yellowYellow500;
+            backgroundColor = Colors[theme].YellowColor;
+            borderColor = Colors[theme].Yellow500;
             textColorVariant = textColor || Colors[theme].white;
             break;
         case 'red':
-            backgroundColor = Colors[theme].redRedColor;
-            borderColor = Colors[theme].redRed500;
+            backgroundColor = Colors[theme].RedColor;
+            borderColor = Colors[theme].Red500;
             textColorVariant = textColor || Colors[theme].white;
             break;
         case 'blue':
-            backgroundColor = Colors[theme].blueBlueColor;
-            borderColor = Colors[theme].blueBlue500;
+            backgroundColor = Colors[theme].BlueColor;
+            borderColor = Colors[theme].Blue500;
             textColorVariant = textColor || Colors[theme].white;
             break;
         case 'green':
         default:
-            backgroundColor = Colors[theme].greenGreenColor;
-            borderColor = Colors[theme].greenGreen500;
+            backgroundColor = Colors[theme].GreenColor;
+            borderColor = Colors[theme].Green500;
             textColorVariant = textColor || Colors[theme].white;
             break;
     }
@@ -49,25 +49,25 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, color, textColor, style
     if (variant === 'outline') 
         switch (color) {
         case 'yellow':
-            backgroundColor = Colors[theme].yellowYellow100;
-            borderColor = Colors[theme].yellowYellow500;
-            textColorVariant = textColor || Colors[theme].yellowYellowColor;
+            backgroundColor = Colors[theme].Yellow100;
+            borderColor = Colors[theme].Yellow500;
+            textColorVariant = textColor || Colors[theme].YellowColor;
             break;
         case 'red':
-            backgroundColor = Colors[theme].redRed100;
-            borderColor = Colors[theme].redRed500;
-            textColorVariant = textColor || Colors[theme].redRedColor;
+            backgroundColor = Colors[theme].Red100;
+            borderColor = Colors[theme].Red500;
+            textColorVariant = textColor || Colors[theme].RedColor;
             break;
         case 'blue':
-            backgroundColor = Colors[theme].blueBlue100;
-            borderColor = Colors[theme].blueBlue500;
-            textColorVariant = textColor || Colors[theme].blueBlueColor;
+            backgroundColor = Colors[theme].Blue100;
+            borderColor = Colors[theme].Blue500;
+            textColorVariant = textColor || Colors[theme].BlueColor;
             break;
         case 'green':
         default:
-            backgroundColor = Colors[theme].greenGreen100;
-            borderColor = Colors[theme].greenGreen500;
-            textColorVariant = textColor || Colors[theme].greenGreenColor;
+            backgroundColor = Colors[theme].Green100;
+            borderColor = Colors[theme].Green500;
+            textColorVariant = textColor || Colors[theme].GreenColor;
             break;
     }
 

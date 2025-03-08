@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = ({ variant, style, ...props }) => {
                 secureTextEntry={variant === 'password'}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
-                placeholderTextColor={Colors[theme].textSubTextColor}
+                placeholderTextColor={Colors[theme].textSub}
                 {...props}
             />
         </View>
@@ -34,7 +34,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             width: '100%',
             flexShrink: 0,
             borderStyle: 'solid',
-            backgroundColor: Colors[theme].backgroundAndBorderBackground2,
+            backgroundColor: Colors[theme].Background2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
@@ -42,7 +42,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             paddingHorizontal: 12,
             paddingVertical: 4,
             borderWidth: 1,
-            borderColor: isFocused ? Colors[theme].greenGreenColor : Colors[theme].backgroundAndBorderBorderColor,
+            borderColor: isFocused ? Colors[theme].GreenColor : Colors[theme].BorderColor,
             borderRadius: 12,
             marginTop: 8,
             marginBottom: 8,
@@ -50,7 +50,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
         placeholder: {
             width: '100%',
             textAlign: 'left',
-            color: Colors[theme].textBodyTextColor,
+            color: Colors[theme].textBody,
             fontSize: 18,
             fontWeight: '400',
             paddingHorizontal: 4,

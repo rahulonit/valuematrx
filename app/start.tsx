@@ -10,7 +10,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
         mainContainer: {
             paddingTop: 54,
             alignItems: 'center',
-            backgroundColor: Colors[theme].background,
+            backgroundColor: Colors[theme].Background1,
             flex: 1,
         },
         imageContainer: {
@@ -38,14 +38,14 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             fontWeight: '400',
             textAlign: 'center',
             marginBottom: 16,
-            color: Colors[theme].text,
+            color: Colors[theme].textHeading,
         },
         description: {
             fontSize: 16,
             lineHeight: 24,
             fontWeight: '400',
             textAlign: 'center',
-            color: Colors[theme].textSubTextColor,
+            color: Colors[theme].textSub,
         },
     });
 

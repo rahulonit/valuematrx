@@ -38,11 +38,11 @@ const SuggestionUpdate = () => {
             {profileSections.map((section, index) => (
                 <View key={index} style={styles.section}>
                     {section.completed ? (
-                        <CheckCircle color={Colors[colorScheme || 'light'].greenGreenColor} size={20} />
+                        <CheckCircle color={Colors[colorScheme || 'light'].GreenColor} size={20} />
                     ) : (
-                        <AlertCircle color={Colors[colorScheme || 'light'].redRedColor} size={20} />
+                        <AlertCircle color={Colors[colorScheme || 'light'].RedColor} size={20} />
                     )}
-                    <Text style={{ fontSize: 14, color: Colors[colorScheme || "light"].text }}>{section.name}</Text>
+                    <Text style={{ fontSize: 14, color: Colors[colorScheme || "light"].textBody }}>{section.name}</Text>
                 </View>
             ))}
 
@@ -62,21 +62,21 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             flexDirection: "row",
             alignItems: "center",
             gap: 8,
-            backgroundColor: Colors[theme].backgroundAndBorderBackground1,
+            backgroundColor: Colors[theme].Background2,
             padding: 6,
             borderRadius: 8,
             borderWidth: 1,
-            borderColor: Colors[theme].backgroundAndBorderBorderColor,
+            borderColor: Colors[theme].BorderColor,
         },
         Sectionscontainer: {
             flexDirection: "row",
             flexWrap: "wrap",
             gap: 8,
-            backgroundColor: Colors[theme].backgroundAndBorderBackground2,
+            backgroundColor: Colors[theme].Background1,
             borderRadius: 18,
             padding: 12,
             paddingTop: 4,
-            borderColor: Colors[theme].backgroundAndBorderBorderColor,
+            borderColor: Colors[theme].BorderColor,
             borderWidth: 1,
             // shadowColor: Colors[theme].greyGreyColor,
             // shadowOpacity: 0.1,
@@ -93,7 +93,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
         cardHeaderTitle: {
             fontSize: 16,
             fontWeight: "bold",
-            color: Colors[theme].text,
+            color: Colors[theme].textBody,
         },
         barcontainer: {
             width: "100%",
@@ -101,17 +101,17 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
         statusBar: {
             width: "100%",
             height: 8,
-            backgroundColor: Colors[theme].backgroundAndBorderBackground1,
+            backgroundColor: Colors[theme].Background1,
             borderRadius: 5,
             overflow: "hidden",
         },
         progressBar: {
             height: "100%",
-            backgroundColor: Colors[theme].greenGreenColor,
+            backgroundColor: Colors[theme].GreenColor,
         },
         percentage: {
             fontSize: 14,
-            color: Colors[theme].textTextColor,
+            color: Colors[theme].textBody,
             marginBottom: 8,
         },
     });

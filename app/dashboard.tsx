@@ -20,9 +20,9 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
       flex: 1,
       alignItems: 'center',
       justifyContent: 'flex-start',
-      backgroundColor: Colors[theme].backgroundAndBorderBackground1,
+      backgroundColor: Colors[theme].Background2,
       padding: 16,
-      paddingBottom:40,
+      paddingBottom: 40,
       gap: 16,
       marginTop: 120,
     },
@@ -30,8 +30,8 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
       width: '100%',
       zIndex: 100,
       position: 'absolute',
-      borderBottomWidth:1,
-borderColor:Colors[theme].backgroundAndBorderBorderColor
+      borderBottomWidth: 1,
+      borderColor: Colors[theme].BorderColor,
     },
   });
 
@@ -46,14 +46,14 @@ export default function Dashboard() {
         <HeaderComponent />
       </View>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      
+
         <View style={styles.container}>
           <SuggestionUpdate />
           <QuickView />
           <TodayInterview />
           <PendingInvites />
-          <CognitiveInvites/>
-          <ScheduleInterview/>
+          <CognitiveInvites />
+          <ScheduleInterview />
         </View>
       </ScrollView>
     </View>

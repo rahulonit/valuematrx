@@ -50,7 +50,7 @@ const Forget: React.FC = () => {
     };
 
     return (
-        <View style={[styles.container, { backgroundColor: Colors[colorScheme || 'light'].background }]}>
+        <View style={[styles.container, { backgroundColor: Colors[colorScheme || 'light'].Background1 }]}>
             <TouchableOpacity style={styles.link} onPress={() => router.push('/login')}>
                 <Text style={styles.linkText}>
                     Back
@@ -130,7 +130,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             textAlign: 'left',
             marginBottom: 16,
             marginTop: 16,
-            color: Colors[theme].textHeadingTextColor,
+            color: Colors[theme].textHeading,
         },
         subTitle: {
             fontSize: 20,
@@ -138,13 +138,13 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             textAlign: 'left',
             marginBottom: 16,
             marginTop: 16,
-            color: Colors[theme].textSubTextColor,
+            color: Colors[theme].textSub,
         },
         text: {
             fontSize: 16,
             fontWeight: '400',
             textAlign: 'left',
-            color: Colors[theme].textBodyTextColor,
+            color: Colors[theme].textBody,
         },
         link: {
             flexDirection: 'row',
@@ -169,7 +169,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             fontWeight: '400',
             textAlign: 'left',
             marginTop: 32,
-            color: Colors[theme].subText,
+            color: Colors[theme].textSub,
         },
         otpContainer: {
             flexDirection: 'row',
@@ -181,10 +181,10 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             width: 40,
             height: 40,
             borderWidth: 1,
-            borderColor: Colors[theme].backgroundAndBorderBorderColor,
+            borderColor: Colors[theme].BorderColor,
             borderRadius: 8,
             textAlign: 'center',
             fontSize: 18,
-            color: Colors[theme].text,
+            color: Colors[theme].textBody,
         },
     });

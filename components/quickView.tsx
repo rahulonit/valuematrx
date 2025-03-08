@@ -31,25 +31,25 @@ const QuickView = () => {
                     title="Scheduled Interviews" 
                     count="5" 
                     icon={Video} 
-                    color={{ light: Colors[colorScheme || 'light'].greenGreen100, dark: Colors[colorScheme || 'light'].greenGreen600, text: Colors[colorScheme || 'light'].greenGreenColor, icon: Colors[colorScheme || 'light'].greenGreen200 }} 
+                    color={{ light: Colors[colorScheme || 'light'].Green100, dark: Colors[colorScheme || 'light'].Green600, text: Colors[colorScheme || 'light'].GreenColor, icon: Colors[colorScheme || 'light'].Green200 }} 
                 />
                 <QuickViewCard 
                     title="Pending Invites / Interviews" 
                     count="20" 
                     icon={Clock} 
-                    color={{ light: Colors[colorScheme || 'light'].redRed100, dark: Colors[colorScheme || 'light'].redRed600, text: Colors[colorScheme || 'light'].redRedColor, icon: Colors[colorScheme || 'light'].redRed200 }} 
+                    color={{ light: Colors[colorScheme || 'light'].Red100, dark: Colors[colorScheme || 'light'].Red600, text: Colors[colorScheme || 'light'].RedColor, icon: Colors[colorScheme || 'light'].Red200 }} 
                 />
                 <QuickViewCard 
                     title="Cognitive and Gamified" 
                     count="30" 
                     icon={Smile} 
-                    color={{ light: Colors[colorScheme || 'light'].yellowYellow100, dark: Colors[colorScheme || 'light'].yellowYellow600, text: Colors[colorScheme || 'light'].yellowYellowColor, icon: Colors[colorScheme || 'light'].yellowYellow200 }} 
+                    color={{ light: Colors[colorScheme || 'light'].Yellow100, dark: Colors[colorScheme || 'light'].Yellow600, text: Colors[colorScheme || 'light'].YellowColor, icon: Colors[colorScheme || 'light'].Yellow200 }} 
                 />
                 <QuickViewCard 
                     title="Completed Interviews" 
                     count="120" 
                     icon={LogIn} 
-                    color={{ light: Colors[colorScheme || 'light'].blueBlue100, dark: Colors[colorScheme || 'light'].blueBlue600, text: Colors[colorScheme || 'light'].blueBlueColor, icon: Colors[colorScheme || 'light'].blueBlue200 }} 
+                    color={{ light: Colors[colorScheme || 'light'].Blue100, dark: Colors[colorScheme || 'light'].Blue600, text: Colors[colorScheme || 'light'].BlueColor, icon: Colors[colorScheme || 'light'].Blue200 }} 
                 />
             </View>
         </View>
@@ -60,19 +60,19 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
     StyleSheet.create({
         quicksection: {
             alignItems:"flex-start",
-            backgroundColor: Colors[theme].backgroundAndBorderBackground2,
+            backgroundColor: Colors[theme].Background1,
             borderRadius: 18,
             borderWidth: 1,
-            borderColor: Colors[theme].backgroundAndBorderBorderColor,
+            borderColor: Colors[theme].BorderColor,
             width: "100%",
             
         },
         sectionTitle: {
             fontSize: 18,
             fontWeight: "bold",
-            color: Colors[theme].text,
+            color: Colors[theme].textBody,
             borderBottomWidth: 1,
-            borderBottomColor: Colors[theme].backgroundAndBorderBorderColor,
+            borderBottomColor: Colors[theme].BorderColor,
             width: "100%",
             padding: 16,
         },

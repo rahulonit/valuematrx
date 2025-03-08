@@ -12,7 +12,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
         mainContainer: {
             paddingTop: 54,
             alignItems: 'center',
-            backgroundColor: Colors[theme].background,
+            backgroundColor: Colors[theme].Background1,
             flex: 1,
         },
         imageContainer: {
@@ -37,14 +37,14 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             fontWeight: '700',
             textAlign: 'center',
             marginBottom: 16,
-            color: Colors[theme].text,
+            color: Colors[theme].textHeading,
         },
         description: {
             fontSize: 16,
             lineHeight: 24,
             fontWeight: '400',
             textAlign: 'center',
-            color: Colors[theme].textSubTextColor,
+            color: Colors[theme].textSub,
         },
         registerLink: {
             marginTop: 12,
@@ -61,15 +61,15 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             alignItems: 'center',
             width: '100%',
             borderWidth: 1,
-            backgroundColor: Colors[theme].backgroundAndBorderBackground2,
-            borderColor: Colors[theme].backgroundAndBorderBorderColor,
+            backgroundColor: Colors[theme].Background2,
+            borderColor: Colors[theme].BorderColor,
         },
         buttonContent: {
             flexDirection: 'row',
             alignItems: 'center',
         },
         buttonText: {
-            color: Colors[theme].text,
+            color: Colors[theme].textBody,
             fontSize: 14,
             fontWeight: '500',
             paddingLeft: 8,

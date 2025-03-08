@@ -11,7 +11,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
         mainContainer: {
             paddingTop: 54,
             alignItems: 'center',
-            backgroundColor: Colors[theme].background,
+            backgroundColor: Colors[theme].Background1,
             flex: 1,
         },
         contentContainer: {
@@ -24,14 +24,14 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             fontWeight: '700',
             textAlign: 'center',
             marginBottom: 16,
-            color: Colors[theme].text,
+            color: Colors[theme].textHeading,
         },
         description: {
             fontSize: 16,
             lineHeight: 24,
             fontWeight: '400',
             textAlign: 'center',
-            color: Colors[theme].textSubTextColor,
+            color: Colors[theme].textSub,
         },
         registerLink: {
             marginTop: 12,
@@ -52,13 +52,13 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             fontSize: 14,
             fontWeight: '400',
             textAlign: 'left',
-            color: Colors[theme].subText,
+            color: Colors[theme].textSub,
         },
         text: {
             fontSize: 16,
             fontWeight: '400',
             textAlign: 'left',
-            color: Colors[theme].textBodyTextColor,
+            color: Colors[theme].textBody,
         },
         link: {
             flexDirection: 'row',

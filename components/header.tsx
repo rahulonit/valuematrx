@@ -19,8 +19,8 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             padding: 8,
             borderRadius: 10,
             borderWidth: 1,
-            borderColor: Colors[theme].backgroundAndBorderBorderColor,
-            color: Colors[theme].text,
+            borderColor: Colors[theme].BorderColor,
+            color: Colors[theme].textBody,
         },
         profileSection: {
             flexDirection: "row",
@@ -37,18 +37,18 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             width: 12,
             height: 12,
             borderRadius: 6,
-            backgroundColor: Colors[theme].lightGreenLightGreenBase,
+            backgroundColor: Colors[theme].LightGreenBase,
             position: "absolute",
             left: 30,
             bottom: 0,
             borderWidth: 2,
-            borderColor: Colors[theme].backgroundAndBorderBackground2,
+            borderColor: Colors[theme].Background2,
         },
         userName: {
             marginLeft: 10,
             fontSize: 16,
             fontWeight: "600",
-            color: Colors[theme].text,
+            color: Colors[theme].textBody,
         },
 
 
@@ -58,7 +58,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             flex: 1,
             alignItems: 'center',
             justifyContent: 'flex-start',
-            backgroundColor: Colors[theme].backgroundAndBorderBackground1,
+            backgroundColor: Colors[theme].Background1,
             padding: 15,
             gap: 15,
         },
@@ -84,7 +84,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
         divider: {
             height: 20,
             width: 1,
-            backgroundColor: Colors[theme].backgroundAndBorderBorderColor,
+            backgroundColor: Colors[theme].BorderColor,
             marginHorizontal: 10,
         },
 
@@ -98,7 +98,7 @@ const Header = ({ toggleNav }: { toggleNav: () => void }) => {
         <View style={styles.headerContainer}>
             {/* Hamburger Menu */}
             <TouchableOpacity style={styles.hamburger} onPress={toggleNav}>
-                <Icon name="menu" color={Colors[colorScheme || 'light'].textBodyTextColor} size={28} />
+                <Icon name="menu" color={Colors[colorScheme || 'light'].textBody} size={28} />
             </TouchableOpacity>
 
             {/* Profile Section */}
@@ -118,7 +118,7 @@ const Header = ({ toggleNav }: { toggleNav: () => void }) => {
                     <Badge
                         value="4"
                         containerStyle={styles.badgeStyle}
-                        badgeStyle={{ backgroundColor: Colors[colorScheme || 'light'].greenGreenColor }}
+                        badgeStyle={{ backgroundColor: Colors[colorScheme || 'light'].GreenColor }}
                     />
                 </TouchableOpacity>
                 <View style={styles.divider} />

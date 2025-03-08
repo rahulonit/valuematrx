@@ -21,7 +21,7 @@ const TodayInterview = () => {
             {/* Message Box */}
             <View style={styles.infoBox}>
                 <View style={styles.iconContainer}>
-                    <Info size={20} color={Colors[colorScheme].whiteForAll} />
+                    <Info size={20} color={Colors[colorScheme].white} />
                 </View>
                 <Text style={styles.message}>There is no Interview scheduled for today</Text>
             </View>
@@ -33,10 +33,10 @@ const TodayInterview = () => {
 const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
     StyleSheet.create({
         todayContainer: {
-            backgroundColor: Colors[theme].backgroundAndBorderBackground2,
+            backgroundColor: Colors[theme].Background1,
             borderRadius: 18,
             borderWidth: 1,
-            borderColor: Colors[theme].backgroundAndBorderBorderColor,
+            borderColor: Colors[theme].BorderColor,
             // shadowColor: Colors[theme].greyGreyColor,
             // shadowOpacity: 0.1,
             // shadowRadius: 4,
@@ -47,14 +47,14 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
-            color: Colors[theme].text,
+            color: Colors[theme].textBody,
             borderBottomWidth: 1,
-            borderBottomColor: Colors[theme].backgroundAndBorderBorderColor,
+            borderBottomColor: Colors[theme].BorderColor,
             width: "100%",
             padding: 16,
         },
         title: {
-            color: Colors[theme].textHeadingTextColor,
+            color: Colors[theme].textHeading,
             fontSize: 18,
             fontWeight: "bold",
         },
@@ -66,26 +66,26 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
         infoBox: {
             flexDirection: "row",
             alignItems: "center",
-            backgroundColor: Colors[theme].blueBlue100,
+            backgroundColor: Colors[theme].Blue100,
             borderRadius: 12,
             padding: 12,
             borderWidth: 1,
-            borderColor: Colors[theme].blueBlueColor,
+            borderColor: Colors[theme].BlueColor,
             margin: 16,
 
         },
         iconContainer: {
-            backgroundColor: Colors[theme].blueBlueColor,
+            backgroundColor: Colors[theme].BlueColor,
             borderRadius: 8,
             padding: 6,
             marginRight: 8,
         },
         icon:{
-            color: Colors[theme].textTextColor,
+            color: Colors[theme].textBody,
         },
         message: {
             fontSize: 14,
-            color: Colors[theme].blueBlueColor,
+            color: Colors[theme].BlueColor,
             flexShrink: 1,
         },
 

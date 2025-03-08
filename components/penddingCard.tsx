@@ -73,21 +73,21 @@ const PendingInvites = () => {
         {/* Job Details */}
         {/* Job Details */}
         <View style={styles.detailsRow}>
-          <Briefcase size={16} color={Colors[colorScheme].textSubTextColor} />
+          <Briefcase size={16} color={Colors[colorScheme].textSub} />
           <Text style={styles.detailText}>{item.jobType}</Text>
         </View>
         <View style={styles.detailsRow}>
-          <MapPin size={16} color={Colors[colorScheme].textSubTextColor} />
+          <MapPin size={16} color={Colors[colorScheme].textSub} />
           <Text style={styles.detailText}>{item.location}</Text>
         </View>
 
         {/* Start & End Date */}
         <View style={styles.dateRow}>
-          <Calendar size={16} color={Colors[colorScheme].textSubTextColor} />
+          <Calendar size={16} color={Colors[colorScheme].textSub} />
           <Text style={styles.dateText}>Start: {item.startDate}</Text>
         </View>
         <View style={styles.dateRow}>
-          <Calendar size={16} color={Colors[colorScheme].textSubTextColor} />
+          <Calendar size={16} color={Colors[colorScheme].textSub} />
           <Text style={styles.dateText}>End: {item.endDate}</Text>
         </View>
       </View>
@@ -127,10 +127,10 @@ const PendingInvites = () => {
 const createStyles = (theme: 'light' | 'dark') =>
   StyleSheet.create({
     container: {
-      backgroundColor: Colors[theme].backgroundAndBorderBackground2,
+      backgroundColor: Colors[theme].Background1,
       borderRadius: 18,
       borderWidth: 1,
-      borderColor: Colors[theme].backgroundAndBorderBorderColor,
+      borderColor: Colors[theme].BorderColor,
       // shadowColor: Colors[theme].greyGreyColor,
       // shadowOpacity: 0.1,
       // shadowRadius: 4,
@@ -141,14 +141,14 @@ const createStyles = (theme: 'light' | 'dark') =>
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      color: Colors[theme].text,
+      color: Colors[theme].textBody,
       borderBottomWidth: 1,
-      borderBottomColor: Colors[theme].backgroundAndBorderBorderColor,
+      borderBottomColor: Colors[theme].BorderColor,
       width: "100%",
       padding: 16,
     },
     title: {
-      color: Colors[theme].textHeadingTextColor,
+      color: Colors[theme].textHeading,
       fontSize: 18,
       fontWeight: "bold",
     },
@@ -171,21 +171,21 @@ const createStyles = (theme: 'light' | 'dark') =>
       justifyContent: "space-between",
     },
     card: {
-      backgroundColor: Colors[theme].backgroundAndBorderBackground1,
+      backgroundColor: Colors[theme].Background2,
       borderRadius: 12,
       padding: 12,
       width: 300,
-      borderBottomColor: Colors[theme].backgroundAndBorderBorderColor,
+      borderBottomColor: Colors[theme].BorderColor,
     },
     jobTitle: {
       fontSize: 16,
       fontWeight: "bold",
       marginBottom: 4,
-      color: Colors[theme].textHeadingTextColor,
+      color: Colors[theme].textHeading,
     },
     company: {
       fontSize: 14,
-      color: Colors[theme].subText,
+      color: Colors[theme].textSub,
       marginBottom: 8,
     },
     
@@ -201,12 +201,12 @@ const createStyles = (theme: 'light' | 'dark') =>
     },
     detailText: {
       fontSize: 14,
-      color: Colors[theme].textBodyTextColor,
+      color: Colors[theme].textBody,
       marginLeft: 6,
     },
     dateText: {
       fontSize: 14,
-      color: Colors[theme].textBodyTextColor,
+      color: Colors[theme].textBody,
       marginLeft: 6,
     },
     buttonRow: {
