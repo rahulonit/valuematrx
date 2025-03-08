@@ -6,25 +6,69 @@ import { useColorScheme } from 'react-native';
 interface ButtonProps {
     title: string;
     onPress: () => void;
-    color?: string;
     textColor?: string;
     style?: ViewStyle;
     textStyle?: TextStyle;
     variant?: 'primary' | 'outline';
     size?: 'small' | 'medium' | 'large';
+    color?: 'green' | 'yellow' | 'red' | 'blue';
 }
 
 const Button: React.FC<ButtonProps> = ({ title, onPress, color, textColor, style, textStyle, variant = 'primary', size = 'medium' }) => {
     const colorScheme = useColorScheme();
     const theme = colorScheme || 'light';
-    let backgroundColor = color || Colors[theme].primary;
-    let borderColor = color || Colors[theme].primary;
+
+    let backgroundColor = Colors[theme].greenGreenColor;
+    let borderColor = Colors[theme].greenGreen500;
     let textColorVariant = textColor || Colors[theme].white;
 
-    if (variant === 'outline') {
-        backgroundColor = 'transparent';
-        borderColor = color || Colors[theme].primary;
-        textColorVariant = color || Colors[theme].primary;
+    switch (color) {
+        case 'yellow':
+            backgroundColor = Colors[theme].yellowYellowColor;
+            borderColor = Colors[theme].yellowYellow500;
+            textColorVariant = textColor || Colors[theme].white;
+            break;
+        case 'red':
+            backgroundColor = Colors[theme].redRedColor;
+            borderColor = Colors[theme].redRed500;
+            textColorVariant = textColor || Colors[theme].white;
+            break;
+        case 'blue':
+            backgroundColor = Colors[theme].blueBlueColor;
+            borderColor = Colors[theme].blueBlue500;
+            textColorVariant = textColor || Colors[theme].white;
+            break;
+        case 'green':
+        default:
+            backgroundColor = Colors[theme].greenGreenColor;
+            borderColor = Colors[theme].greenGreen500;
+            textColorVariant = textColor || Colors[theme].white;
+            break;
+    }
+
+    if (variant === 'outline') 
+        switch (color) {
+        case 'yellow':
+            backgroundColor = Colors[theme].yellowYellow100;
+            borderColor = Colors[theme].yellowYellow500;
+            textColorVariant = textColor || Colors[theme].yellowYellowColor;
+            break;
+        case 'red':
+            backgroundColor = Colors[theme].redRed100;
+            borderColor = Colors[theme].redRed500;
+            textColorVariant = textColor || Colors[theme].redRedColor;
+            break;
+        case 'blue':
+            backgroundColor = Colors[theme].blueBlue100;
+            borderColor = Colors[theme].blueBlue500;
+            textColorVariant = textColor || Colors[theme].blueBlueColor;
+            break;
+        case 'green':
+        default:
+            backgroundColor = Colors[theme].greenGreen100;
+            borderColor = Colors[theme].greenGreen500;
+            textColorVariant = textColor || Colors[theme].greenGreenColor;
+            break;
     }
 
     const sizeStyles = getSizeStyles(size);
@@ -43,6 +87,7 @@ const getSizeStyles = (size: 'small' | 'medium' | 'large') => {
                 button: {
                     paddingVertical: 8,
                     paddingHorizontal: 16,
+                    borderRadius: 8,
                 },
                 buttonText: {
                     fontSize: 12,
@@ -53,6 +98,7 @@ const getSizeStyles = (size: 'small' | 'medium' | 'large') => {
                 button: {
                     paddingVertical: 16,
                     paddingHorizontal: 32,
+                    borderRadius: 16,
                 },
                 buttonText: {
                     fontSize: 18,
@@ -64,6 +110,7 @@ const getSizeStyles = (size: 'small' | 'medium' | 'large') => {
                 button: {
                     paddingVertical: 12,
                     paddingHorizontal: 24,
+                    borderRadius: 12,
                 },
                 buttonText: {
                     fontSize: 14,
@@ -77,7 +124,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 12,
-        width: '100%',
         marginVertical: 8,
         borderWidth: 1,
     },

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { View, ImageBackground, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Animated, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Colors } from '../constants/Colors';
 import { useColorScheme } from 'react-native';
 import Button from '@/components/button';
-
 
 const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
     StyleSheet.create({
@@ -48,27 +47,32 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             textAlign: 'center',
             color: Colors[theme].textSubTextColor,
         },
-        
     });
 
 const Start: React.FC = () => {
     const router = useRouter(); // Navigation Hook
     const colorScheme = useColorScheme();
-    const colors = Colors[colorScheme || 'dark'];
-    
+    const styles = createStyles(colorScheme || 'dark', false);
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+
+    useEffect(() => {
+        Animated.timing(fadeAnim, {
+            toValue: 1,
+            duration: 2000,
+            useNativeDriver: true,
+        }).start();
+    }, []);
 
     const redirectToSignIn = () => {
         console.log('Sign in');
         router.push('/login');
     };
 
-    const styles = createStyles(colorScheme || 'dark', false);
-
     return (
         <ScrollView contentContainerStyle={styles.mainContainer}>
             <View style={styles.imageContainer}>
-                <ImageBackground
-                    style={styles.topimage}
+                <Animated.Image
+                    style={[styles.topimage, { opacity: fadeAnim }]}
                     source={colorScheme === 'dark' ? require('@/assets/images/dark-image.png') : require('@/assets/images/image.png')}
                 />
             </View>
@@ -77,12 +81,10 @@ const Start: React.FC = () => {
                 <View style={styles.textContainer}>
                     <View style={styles.titleandDescriptionContainer}>
                         <Text style={styles.title}>Get the full experience</Text>
-
-                      
                     </View>
                 </View>
             </View>
-            <Button title="Sign in" size='large' style={{ width: 350 }} onPress={redirectToSignIn} color={colors.greenGreenColor} />
+            <Button title="Sign in" size='large' style={{ width: 350 }} onPress={redirectToSignIn} />
         </ScrollView>
     );
 };

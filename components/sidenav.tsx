@@ -1,41 +1,47 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { useColorScheme } from 'react-native';
 import { Colors } from '../constants/Colors';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import { Icon } from "react-native-elements";
+import { BlurView } from 'expo-blur';
 
 interface User {
     photo: string;
     name: string;
 }
-
+const { width, height } = Dimensions.get('window');
 const createStyles = (theme: 'light' | 'dark', isFocused: boolean) => StyleSheet.create({
     nav: {
         position: 'absolute',
-        width: '100%',
-        height: '100%',
+        width: width,
+        height: height,
         top: 0,
-        left: 0,
+        left: -0,
         zIndex: 1000,
         flexDirection: 'row',
     },
     leftSide: {
-        flex: 3,
-        paddingTop: 60,
+       // maxWidth:500,
+        width:"75%",
+        paddingTop: 50,
         backgroundColor: Colors[theme].backgroundAndBorderBackground2,
-        padding: 12,
-        height: 1000,
+        padding: 20,
+        height: height,
     },
     rightSide: {
-        flex: 1,
-        paddingTop: 60,
+       // maxWidth: width - 500,
+        width:"25%",
+        paddingTop: 50,
         backgroundColor: Colors[theme].backgroundAndBorderBackground1,
+        backdropFilter:'screen',
         justifyContent: 'flex-start',
-        alignItems: 'center',
-        height: 1000,
+        alignItems: 'flex-end',
+        paddingRight:20,
+        height: height,
     },
     closeButton: {
         padding: 8,
@@ -139,22 +145,12 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) => StyleSheet
         borderWidth: 5,
         borderColor: Colors[theme].greenGreenColor,
     },
-    onlineIndicator: {
-        width: 14,
-        height: 14,
-        borderRadius: 7,
-        backgroundColor: Colors[theme].lightGreenLightGreenBase,
-        position: "relative",
-        bottom: 20,
-        left: 75,
-        borderWidth: 2,
-        borderColor: Colors[theme].textBodyTextColor,
-    },
+    
     progressBadge: {
         flexDirection: "row",
         alignItems: "center",
         position: "relative",
-        bottom: 20,
+        bottom: 10,
         left: 14,
         width: 64,
         height: 24,
@@ -173,15 +169,16 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) => StyleSheet
 });
 
 const SideNav = ({ user, isOpen, toggleNav }: { user: User, isOpen: boolean, toggleNav: () => void }) => {
+    const router = useRouter();
     const colorScheme = useColorScheme();
     const colors = Colors[colorScheme || 'dark'];
-    const translateX = useSharedValue(-700);
+    const translateX = useSharedValue(-width);
     const [selectedRole, setSelectedRole] = useState("Interviewer");
 
     if (isOpen) {
         translateX.value = withTiming(0, { duration: 300 });
     } else {
-        translateX.value = withTiming(-700, { duration: 300 });
+        translateX.value = withTiming(-width, { duration: 300 });
     }
 
     const animatedStyle = useAnimatedStyle(() => {
@@ -237,7 +234,7 @@ const SideNav = ({ user, isOpen, toggleNav }: { user: User, isOpen: boolean, tog
                         <View style={styles.profileImageWrapper}>
                             <Image source={{ uri: user.photo }} style={styles.profileImage} />
                             <View style={styles.progressRing} />
-                            <View style={styles.onlineIndicator} />
+                            
                             {/* Progress Badge */}
                             <View style={styles.progressBadge}>
                                 <Icon name="shield-check" type="material-community" color="white" size={14} />
@@ -303,14 +300,24 @@ const SideNav = ({ user, isOpen, toggleNav }: { user: User, isOpen: boolean, tog
                         </Text>
                     </TouchableOpacity>
 
+                    <TouchableOpacity  style={styles.menuItem}  onPress={() => router.push('/start')}>
+                       
+
+                        <Text style={styles.menuItemText}>
+                            Logout
+                        </Text>
+                    </TouchableOpacity>
+
+
 
                 </View>
                 {/* close Section */}
-                <View style={styles.rightSide}>
-                    <TouchableOpacity onPress={toggleNav} style={styles.closeButton}>
-                        <Ionicons name="close" size={32} color={colors.text} />
+                
+                <BlurView intensity={30} style={styles.rightSide }>
+                <TouchableOpacity onPress={toggleNav} style={styles.closeButton}>
+                    <Ionicons name="close" size={32} color={colors.text} />
                     </TouchableOpacity>
-                </View>
+                </BlurView>
                 
         </Animated.View>
     );

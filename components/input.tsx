@@ -21,6 +21,7 @@ const Input: React.FC<InputProps> = ({ variant, style, ...props }) => {
                 secureTextEntry={variant === 'password'}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
+                placeholderTextColor={Colors[theme].textSubTextColor}
                 {...props}
             />
         </View>
@@ -38,21 +39,22 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             flexDirection: 'column',
             alignItems: 'flex-start',
             justifyContent: 'center',
-            paddingHorizontal: 16,
-            paddingVertical: 16,
+            paddingHorizontal: 12,
+            paddingVertical: 4,
             borderWidth: 1,
             borderColor: isFocused ? Colors[theme].greenGreenColor : Colors[theme].backgroundAndBorderBorderColor,
             borderRadius: 12,
             marginTop: 8,
             marginBottom: 8,
-           
         },
         placeholder: {
             width: '100%',
             textAlign: 'left',
-            color: Colors[theme].textSubTextColor,
+            color: Colors[theme].textBodyTextColor,
             fontSize: 18,
             fontWeight: '400',
+            paddingHorizontal: 4,
+            paddingVertical: 12,
         },
     });
 
