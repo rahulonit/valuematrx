@@ -33,7 +33,7 @@ export default function RootLayout() {
       <Stack initialRouteName="start">
         <Stack.Screen name="start" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
-        <Stack.Screen name="register" options={{ headerShown: false }} />
+        <Stack.Screen name="Register" options={{ headerShown: true }} />
         <Stack.Screen name="forget" options={{ headerShown: false }} />
         <Stack.Screen name="dashboard" options={{ headerShown: false }}/>
         <Stack.Screen name="interviews" options={{ headerShown: false }}/>

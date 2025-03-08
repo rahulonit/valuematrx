@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -12,9 +12,10 @@ import { BlurView } from 'expo-blur';
 interface User {
     photo: string;
     name: string;
+    email: string;
+    role: string;
 }
 const { width, height } = Dimensions.get('window');
-
 
 const SideNav = ({ user, isOpen, toggleNav }: { user: User, isOpen: boolean, toggleNav: () => void }) => {
     const router = useRouter();
@@ -23,11 +24,13 @@ const SideNav = ({ user, isOpen, toggleNav }: { user: User, isOpen: boolean, tog
     const translateX = useSharedValue(-width);
     const [selectedRole, setSelectedRole] = useState("Interviewer");
 
-    if (isOpen) {
-        translateX.value = withTiming(0, { duration: 300 });
-    } else {
-        translateX.value = withTiming(-width, { duration: 300 });
-    }
+    useEffect(() => {
+        if (isOpen) {
+            translateX.value = withTiming(0, { duration: 300 });
+        } else {
+            translateX.value = withTiming(-width, { duration: 300 });
+        }
+    }, [isOpen, translateX]);
 
     const animatedStyle = useAnimatedStyle(() => {
         return {
@@ -39,77 +42,74 @@ const SideNav = ({ user, isOpen, toggleNav }: { user: User, isOpen: boolean, tog
 
     return (
         <Animated.View style={[styles.nav, animatedStyle]}>
-                <View style={styles.leftSide}>
-                    {/* Toggle Buttons */}
-                    <View style={styles.toggleContainer}>
-                        <TouchableOpacity
+            <View style={styles.leftSide}>
+                {/* Toggle Buttons */}
+                <View style={styles.toggleContainer}>
+                    <TouchableOpacity
+                        style={[
+                            styles.toggleButton,
+                            selectedRole === "Candidate" && styles.selectedButton,
+                        ]}
+                        onPress={() => setSelectedRole("Candidate")}
+                    >
+                        <Text
                             style={[
-                                styles.toggleButton,
-                                selectedRole === "Candidate" && styles.selectedButton,
+                                styles.toggleText,
+                                selectedRole === "Candidate" && styles.selectedText,
                             ]}
-                            onPress={() => setSelectedRole("Candidate")}
                         >
-                            <Text
-                                style={[
-                                    styles.toggleText,
-                                    selectedRole === "Candidate" && styles.selectedText,
-                                ]}
-                            >
-                                Candidate
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity
-                            style={[
-                                styles.toggleButton,
-                                selectedRole === "Interviewer" && styles.selectedButton,
-                            ]}
-                            onPress={() => setSelectedRole("Interviewer")}
-                        >
-                            <Text
-                                style={[
-                                    styles.toggleText,
-                                    selectedRole === "Interviewer" && styles.selectedText,
-                                ]}
-                            >
-                                Interviewer
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    {/* Profile Section */}
-                    <View style={styles.profileContainer}>
-                        <View style={styles.profileImageWrapper}>
-                            <Image source={{ uri: user.photo }} style={styles.profileImage} />
-                            <View style={styles.progressRing} />
-                            
-                            {/* Progress Badge */}
-                            <View style={styles.progressBadge}>
-                                <Icon name="shield-check" type="material-community" color="white" size={14} />
-                                <Text style={styles.progressText}>75%</Text>
-                            </View>
-                        </View>
-                        <Text style={styles.userName}>{user.name}</Text>
-                        <Text style={styles.dateTime}>Frontend Developer</Text>
-                        <Text style={styles.dateTime}>{new Date().toLocaleDateString('en-GB', {
-                            day: '2-digit', month: 'long', year: '2-digit', })} •
-                            {new Date().toLocaleDateString('en-GB', { weekday: 'long' })}
+                            Candidate
                         </Text>
-                    </View>
-                    <Menu user={user} isOpen={isOpen} toggleNav={toggleNav} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={[
+                            styles.toggleButton,
+                            selectedRole === "Interviewer" && styles.selectedButton,
+                        ]}
+                        onPress={() => setSelectedRole("Interviewer")}
+                    >
+                        <Text
+                            style={[
+                                styles.toggleText,
+                                selectedRole === "Interviewer" && styles.selectedText,
+                            ]}
+                        >
+                            Interviewer
+                        </Text>
+                    </TouchableOpacity>
                 </View>
-                {/* close Section */}
-                
-                <BlurView intensity={30} style={styles.rightSide }>
+
+                {/* Profile Section */}
+                <View style={styles.profileContainer}>
+                    <View style={styles.profileImageWrapper}>
+                        <Image source={{ uri: user.photo }} style={styles.profileImage} />
+                        <View style={styles.progressRing} />
+                        
+                        {/* Progress Badge */}
+                        <View style={styles.progressBadge}>
+                            <Icon name="shield-check" type="material-community" color="white" size={14} />
+                            <Text style={styles.progressText}>75%</Text>
+                        </View>
+                    </View>
+                    <Text style={styles.userName}>{user.name}</Text>
+                    <Text style={styles.dateTime}>Frontend Developer</Text>
+                    <Text style={styles.dateTime}>{new Date().toLocaleDateString('en-GB', {
+                        day: '2-digit', month: 'long', year: '2-digit', })} •
+                        {new Date().toLocaleDateString('en-GB', { weekday: 'long' })}
+                    </Text>
+                </View>
+                <Menu role={selectedRole} isOpen={isOpen} toggleNav={toggleNav} />
+            </View>
+            {/* Close Section */}
+            <BlurView intensity={30} style={styles.rightSide}>
                 <TouchableOpacity onPress={toggleNav} style={styles.closeButton}>
                     <Ionicons name="close" size={32} color={colors.textBody} />
-                    </TouchableOpacity>
-                </BlurView>
-                
+                </TouchableOpacity>
+            </BlurView>
         </Animated.View>
     );
 };
-
 
 const createStyles = (theme: 'light' | 'dark', isFocused: boolean) => StyleSheet.create({
     nav: {
@@ -117,27 +117,24 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) => StyleSheet
         width: width,
         height: height,
         top: 0,
-        left: -0,
+        left: 0,
         zIndex: 1000,
         flexDirection: 'row',
     },
     leftSide: {
-       // maxWidth:500,
-        width:"75%",
+        width: "75%",
         paddingTop: 50,
         backgroundColor: Colors[theme].Background2,
         padding: 20,
         height: height,
     },
     rightSide: {
-       // maxWidth: width - 500,
-        width:"25%",
+        width: "25%",
         paddingTop: 50,
         backgroundColor: Colors[theme].Background1,
-        backdropFilter:'screen',
         justifyContent: 'flex-start',
         alignItems: 'flex-end',
-        paddingRight:20,
+        paddingRight: 20,
         height: height,
     },
     closeButton: {
@@ -216,7 +213,6 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) => StyleSheet
         borderWidth: 5,
         borderColor: Colors[theme].GreenColor,
     },
-    
     progressBadge: {
         flexDirection: "row",
         alignItems: "center",
@@ -236,8 +232,6 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) => StyleSheet
         fontWeight: "600",
         marginLeft: 4,
     },
-
 });
-
 
 export default SideNav;

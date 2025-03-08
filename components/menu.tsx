@@ -6,15 +6,16 @@ import { Colors } from '../constants/Colors';
 import Svg, { Path } from 'react-native-svg';
 
 interface User {
-    name: string;
-    email: string;
+    user: User;
+    isOpen: boolean;
+    toggleNav: () => void;
     role: string;
 }
 
-const Menu = ({ isOpen, toggleNav }: { user: User, isOpen: boolean, toggleNav: () => void }) => {
+const Menu = ({ isOpen }: { user: User, isOpen: boolean }) => {
     const router = useRouter();
     const colorScheme = useColorScheme();
-        
+
 
 
     const styles = createStyles(colorScheme || 'dark', isOpen);

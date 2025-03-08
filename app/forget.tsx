@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Alert, TouchableOpacity, TextInput } from 'reac
 import { useRouter } from 'expo-router';
 import { Colors } from '../constants/Colors';
 import { useColorScheme } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'; // 
 import Input from '@/components/input';
 import Button from '@/components/button';
 
@@ -52,13 +53,14 @@ const Forget: React.FC = () => {
     return (
         <View style={[styles.container, { backgroundColor: Colors[colorScheme || 'light'].Background1 }]}>
             <TouchableOpacity style={styles.link} onPress={() => router.push('/login')}>
+            <Icon name="arrow-back" size={24} color={Colors[colorScheme || 'light'].primary} /> {/* Add the back arrow icon */}
                 <Text style={styles.linkText}>
                     Back
                 </Text>
             </TouchableOpacity>
             <Text style={styles.title}>Reset Password</Text>
 
-            <Text style={styles.text}>
+            <Text style={styles.subtext}>
                 Enter the email address you used when you joined and we’ll send you instructions to reset your password.
             </Text>
             {!showOtpInput && (
@@ -70,16 +72,16 @@ const Forget: React.FC = () => {
                         variant="email"
                         placeholder="Email"
                         autoCapitalize="none"
-                        value={email}
+                        value="name@email.com"
                         onChangeText={setEmail}
                     />
-                    <Button title="Submit" size='large' onPress={handleEmailSubmit} color="green" />
+                    <Button style={styles.button} title="Submit" size='large' onPress={handleEmailSubmit} color="green" />
                 </>
             )}
             {showOtpInput && (
                 <>
                     <Text style={styles.subTitle}>
-                        {email}
+                    name@email.com <Icon name="edit" size={24} color={Colors[colorScheme || 'light'].primary} />
                     </Text>
                     <Text style={styles.label}>
                         6 Digit OTP*
@@ -97,11 +99,11 @@ const Forget: React.FC = () => {
                             />
                         ))}
                     </View>
-                    <Button title="Verify" size='large' onPress={handleOtpVerify} color="green" />
+                    <Button style={styles.button} title="Verify" size='large' onPress={handleOtpVerify} color="green" />
                 </>
             )}
             <View style={styles.sec23}>
-                <Text style={styles.text}>
+                <Text style={styles.subtext}>
                     Don’t have an account? .
                 </Text>
                 <TouchableOpacity style={styles.link} onPress={() => router.push('/register')}>
@@ -136,15 +138,21 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             fontSize: 20,
             fontWeight: '400',
             textAlign: 'left',
-            marginBottom: 16,
             marginTop: 16,
             color: Colors[theme].textSub,
+            padding: 8,
+            borderRadius: 8,
+            backgroundColor: Colors[theme].Background2,
+            borderColor: Colors[theme].BorderColor,
+            borderWidth: 1,
+            width: '100%',
         },
-        text: {
+        subtext: {
             fontSize: 16,
             fontWeight: '400',
             textAlign: 'left',
             color: Colors[theme].textBody,
+      
         },
         link: {
             flexDirection: 'row',
@@ -167,24 +175,28 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
         label: {
             fontSize: 14,
             fontWeight: '400',
-            textAlign: 'left',
             marginTop: 32,
             color: Colors[theme].textSub,
+            width: '100%',  
+            alignSelf: 'center',
         },
         otpContainer: {
             flexDirection: 'row',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             marginTop: 16,
             marginBottom: 32,
+            width: '100%',
         },
         otpInput: {
             width: 40,
-            height: 40,
+            height: 60,
             borderWidth: 1,
             borderColor: Colors[theme].BorderColor,
             borderRadius: 8,
             textAlign: 'center',
             fontSize: 18,
+            marginRight: 16,
             color: Colors[theme].textBody,
         },
+        button: { width: "100%" },
     });

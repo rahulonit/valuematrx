@@ -8,16 +8,13 @@ import Input from '@/components/input';
 
 const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
     StyleSheet.create({
-        mainContainer: {
-            paddingTop: 54,
-            alignItems: 'center',
-            backgroundColor: Colors[theme].Background1,
-            flex: 1,
-        },
+        
         contentContainer: {
             padding: 16,
             width: '100%',
             alignItems: 'center',
+            backgroundColor: Colors[theme].Background1,
+            flex: 1,
         },
         signIntitle: {
             fontSize: 32,
@@ -105,10 +102,8 @@ const Register: React.FC = () => {
     const styles = createStyles(colorScheme || 'dark', false);
 
     return (
-        <ScrollView contentContainerStyle={styles.mainContainer}>
+        <ScrollView>
             <View style={styles.contentContainer}>
-                <Text style={styles.signIntitle}>Register</Text>
-
                 <View style={styles.inputContaniner}>
                     <Text style={styles.label}>
                         First Name*
