@@ -35,7 +35,7 @@ export const Colors = {
     Green900: '#0b2b27',
     Green1000: '#071a18',
 
-    // Color BLUE 
+    // Color BLUE  or info
     Blue100: 'rgba(75 77 237 / 0.15)',
     Blue200: 'rgba(75 77 237 / 0.32)',
     Blue300: 'rgba(75 77 237 / 0.49)',

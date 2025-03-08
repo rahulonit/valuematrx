@@ -64,7 +64,7 @@ const InterviewCard = ({ item, theme, styles }: { item: InterviewItem; theme: 'l
     </View>
 );
 
-export default function InterviewsScreen() {
+export default function InvitationScreen() {
     const router = useRouter();
     const colorScheme = useColorScheme() ?? 'light';
     const theme = colorScheme;
@@ -109,7 +109,7 @@ export default function InterviewsScreen() {
                     <View style={styles.profileContainer}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>  
                             <Text style={styles.profileText}>Complete your profile</Text>
-                            <Button style={styles.button}  title="Update Profile" color='yellow' variant='outline' onPress={() => router.push('/profile')} />
+                            <Button style={styles.button}  title="Update Profile" color='yellow' variant='outline' onPress={() => router.push('/profile')}  />
                        </View>
                         <Text style={styles.matchText}>75% Completed</Text>
                         <View style={styles.progressBarContainer}>
@@ -198,7 +198,10 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         backgroundColor: Colors[theme].GreenColor,
     },
     tabContainer: {
-        flex: 1, 
+        borderRadius: 16,
+        overflow: 'hidden',
+        borderColor: Colors[theme].BorderColor,
+        borderWidth: 1,flex: 1, 
     },  
     tabs: {
         flexDirection: 'row',
@@ -210,6 +213,8 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         borderTopRightRadius: 16,
         overflow: 'hidden',
         gap: 8,
+        
+        backgroundColor: Colors[theme].Background2,
     },
     tabButton: {
         flex: 1,
@@ -217,14 +222,11 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         borderTopRightRadius: 16,
         padding: 16,
         alignItems: 'center',
-        borderBottomWidth: 0,
-        borderWidth: 1,
-        borderColor: Colors[theme].BorderColor,
     },
     activeTabButton: {
         flex: 1,
         padding: 16,
-        backgroundColor: Colors[theme].Background1,
+        backgroundColor: Colors[theme].Green100,
     },
     tabButtonText: {
         fontSize: 16,
@@ -235,15 +237,13 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
     },
     listContainer: {
         gap: 8,
+        borderColor: Colors[theme].BorderColor,
         width: '100%',
         borderTopWidth: 0,
         borderRadius: 16,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
         padding: 12,
-        borderColor: Colors[theme].BorderColor,
-        borderWidth: 1,
-        backgroundColor: Colors[theme].Background1,
     },
     card: {
         borderRadius: 12,
