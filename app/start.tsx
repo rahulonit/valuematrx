@@ -3,14 +3,13 @@ import { View, Animated, Text, StyleSheet, ScrollView, Dimensions } from 'react-
 import { useRouter } from 'expo-router';
 import { Colors } from '../constants/Colors';
 import { useColorScheme } from 'react-native';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 
 const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
     StyleSheet.create({
         mainContainer: {
             paddingTop: 54,
             alignItems: 'center',
-            backgroundColor: Colors[theme].Background1,
             flex: 1,
         },
         imageContainer: {

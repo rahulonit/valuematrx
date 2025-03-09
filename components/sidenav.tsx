@@ -99,7 +99,7 @@ const SideNav = ({ user, isOpen, toggleNav }: { user: User, isOpen: boolean, tog
                         {new Date().toLocaleDateString('en-GB', { weekday: 'long' })}
                     </Text>
                 </View>
-                <Menu role={selectedRole} isOpen={isOpen} toggleNav={toggleNav} />
+                <Menu user={user} role={selectedRole} isOpen={isOpen} toggleNav={toggleNav} />
             </View>
             {/* Close Section */}
             <BlurView intensity={30} style={styles.rightSide}>

@@ -2,8 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { Briefcase, Calendar, MapPin } from "lucide-react-native";
 import { useColorScheme } from 'react-native';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 import { Colors } from '../constants/Colors';
+import { useRouter } from 'expo-router';
 
 const redirectSignIn = () => {
     console.log("Redirecting to sign in...");
@@ -58,6 +59,7 @@ const invites = [
 ];
 
 const ScheduleInterview = () => {
+    const router = useRouter();
     const colorScheme = useColorScheme() ?? 'light';
     const styles = createStyles(colorScheme);
 
@@ -105,7 +107,7 @@ const ScheduleInterview = () => {
             {/* Header */}
             <View style={styles.header}>
                 <Text style={styles.title}>Scheduled Interview (30)</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => router.push('/interviews')}>
                     <Text style={styles.viewAll}>View All</Text>
                 </TouchableOpacity>
             </View>

@@ -4,15 +4,14 @@ import Svg, { Path } from 'react-native-svg';
 import { useRouter } from 'expo-router';
 import { Colors } from '../constants/Colors';
 import { useColorScheme } from 'react-native';
-import Button from '@/components/button';
-import Input from '@/components/input';
+import Button from '@/components/ui/button';
+import Input from '@/components/ui/input';
 
 const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
     StyleSheet.create({
         mainContainer: {
             paddingTop: 54,
             alignItems: 'center',
-            backgroundColor: Colors[theme].Background1,
             flex: 1,
         },
         imageContainer: {
@@ -61,7 +60,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             alignItems: 'center',
             width: '100%',
             borderWidth: 1,
-            backgroundColor: Colors[theme].Background2,
+            backgroundColor: Colors[theme].Background1,
             borderColor: Colors[theme].BorderColor,
         },
         buttonContent: {
@@ -97,7 +96,7 @@ const Login: React.FC = () => {
     }
     const redirectToRegister = () => {
         console.log('Create/Register account');
-        router.push('/register');
+        router.push('/Register');
     }
 
     const redirectSignIn = () => {

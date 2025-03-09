@@ -2,7 +2,8 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { Briefcase, Calendar, MapPin } from "lucide-react-native";
 import { useColorScheme } from 'react-native';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
+import { router } from "expo-router";
 import { Colors } from '../constants/Colors';
 
 const redirectSignIn = () => {
@@ -60,6 +61,7 @@ const invites = [
 const CognitiveInvites = () => {
     const colorScheme = useColorScheme() ?? 'light';
     const styles = createStyles(colorScheme);
+    
 
     const renderItem = ({ item }: { item: typeof invites[0] }) => (
         <View style={styles.card}>
@@ -101,11 +103,12 @@ const CognitiveInvites = () => {
     );
 
     return (
+        
         <View style={styles.container}>
             {/* Header */}
             <View style={styles.header}>
                 <Text style={styles.title}>Cognitive and Psychometric (30)</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => router.push('/invitations')}>
                     <Text style={styles.viewAll}>View All</Text>
                 </TouchableOpacity>
             </View>

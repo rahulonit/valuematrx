@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Info } from "lucide-react-native";
 import { useColorScheme } from 'react-native';
 import { Colors } from '../constants/Colors';
+import { router } from "expo-router";
 
 const TodayInterview = () => {
 
@@ -13,7 +14,7 @@ const TodayInterview = () => {
             {/* Header */}
             <View style={styles.header}>
                 <Text style={styles.title}>Today Interview</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => router.push('/interviews')}>
                     <Text style={styles.viewAll}>View All</Text>
                 </TouchableOpacity>
             </View>

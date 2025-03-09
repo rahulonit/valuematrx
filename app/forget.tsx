@@ -4,8 +4,8 @@ import { useRouter } from 'expo-router';
 import { Colors } from '../constants/Colors';
 import { useColorScheme } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // 
-import Input from '@/components/input';
-import Button from '@/components/button';
+import Input from '@/components/ui/input';
+import Button from '@/components/ui/button';
 
 const Forget: React.FC = () => {
     const router = useRouter(); // Navigation Hook
@@ -51,7 +51,7 @@ const Forget: React.FC = () => {
     };
 
     return (
-        <View style={[styles.container, { backgroundColor: Colors[colorScheme || 'light'].Background1 }]}>
+        <View style={[styles.container]}>
             <TouchableOpacity style={styles.link} onPress={() => router.push('/login')}>
             <Icon name="arrow-back" size={24} color={Colors[colorScheme || 'light'].primary} /> {/* Add the back arrow icon */}
                 <Text style={styles.linkText}>
@@ -106,7 +106,7 @@ const Forget: React.FC = () => {
                 <Text style={styles.subtext}>
                     Don’t have an account? .
                 </Text>
-                <TouchableOpacity style={styles.link} onPress={() => router.push('/register')}>
+                <TouchableOpacity style={styles.link} onPress={() => router.push('/Register')}>
                     <Text style={styles.linkText}>
                         Sign up here
                     </Text>

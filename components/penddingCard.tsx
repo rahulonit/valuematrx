@@ -2,12 +2,12 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { Briefcase, Calendar, MapPin } from "lucide-react-native";
 import { useColorScheme } from 'react-native';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 import { Colors } from '../constants/Colors';
+import { router } from "expo-router";
 
-const redirectSignIn = () => {
-  // Add your redirect logic here
-  console.log("Redirecting to sign in...");
+const AlertBox = (message: string) => {
+    alert(message);
 };
 
 
@@ -60,6 +60,7 @@ const invites = [
   },
   // Add more invite objects as needed
 ];
+
 const PendingInvites = () => {
   const colorScheme = useColorScheme() ?? 'light';
   const styles = createStyles(colorScheme ?? 'light');
@@ -93,8 +94,8 @@ const PendingInvites = () => {
       </View>
       {/* Accept & Decline Buttons */}
       <View style={styles.buttonRow}>
-        <Button style={styles.buttonDes} title="Accept" size='medium' color="green" onPress={redirectSignIn} />
-        <Button style={styles.buttonDes} title="Decline" size='medium' color="yellow" variant="outline" onPress={redirectSignIn} />
+        <Button style={styles.buttonDes} title="Accept" size='medium' color="green" onPress={() => AlertBox('Accepted')} />
+        <Button style={styles.buttonDes} title="Decline" size='medium' color="yellow" variant="outline" onPress={() => AlertBox('Declined')} />
       </View>
     </View >
   );
@@ -104,7 +105,7 @@ const PendingInvites = () => {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>Pending Invites (20)</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push('/interviews')}>
           <Text style={styles.viewAll}>View All</Text>
         </TouchableOpacity>
       </View>

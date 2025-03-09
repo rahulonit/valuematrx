@@ -7,7 +7,7 @@ import QuickView from '@/components/quickView';
 import SuggestionUpdate from '@/components/suggestionUpdate';
 import TodayInterview from '@/components/todayCard';
 import PendingInvites from '@/components/penddingCard';
-import HeaderComponent from '@/components/header';
+import HeaderComponent from '@/components/ui/header';
 import CognitiveInvites from '@/components/cognitiveInvites';
 import ScheduleInterview from '@/components/scheduleInterview';
 
@@ -20,7 +20,6 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
       flex: 1,
       alignItems: 'center',
       justifyContent: 'flex-start',
-      backgroundColor: Colors[theme].Background2,
       padding: 16,
       paddingBottom: 40,
       gap: 16,
@@ -43,7 +42,7 @@ export default function Dashboard() {
     <View >
       <Stack.Screen options={{ title: 'Dashboard' }} />
       <View style={styles.dashContainer}>
-        <HeaderComponent />
+        <HeaderComponent  title='Dashboard'/>
       </View>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
 

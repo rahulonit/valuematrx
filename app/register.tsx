@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import { useRouter } from 'expo-router';
 import { Colors } from '../constants/Colors';
 import { useColorScheme } from 'react-native';
-import Button from '@/components/button';
-import Input from '@/components/input';
+import Button from '@/components/ui/button';
+import Input from '@/components/ui/input';
 
 const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
     StyleSheet.create({
@@ -13,7 +13,6 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) =>
             padding: 16,
             width: '100%',
             alignItems: 'center',
-            backgroundColor: Colors[theme].Background1,
             flex: 1,
         },
         signIntitle: {

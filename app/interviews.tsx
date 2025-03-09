@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, ScrollView } from 'react-native';
 import { useColorScheme } from 'react-native';
-import HeaderComponent from '@/components/header';
+import HeaderComponent from '@/components/ui/header';
 import { Stack, useRouter } from 'expo-router';
 import { Colors } from '@/constants/Colors';
-import Button from '@/components/button';
+import UpdateProfile from '@/components/updateProfile';
 
 const today = [
     { id: '1', title: 'Frontend Developer', company: 'Google', match: 95, logo: 'https://logo.clearbit.com/google.com' },
@@ -36,9 +36,10 @@ const pending = [
 
 
 const getMatchColor = (match: number, theme: 'light' | 'dark') => {
-    if (match >= 90) return { backgroundColor: Colors[theme].GreenColor };
-    if (match >= 70) return { backgroundColor: Colors[theme].YellowColor };
-    return { backgroundColor: Colors[theme].RedColor };
+    if (match >= 90) return { backgroundColor: Colors[theme].Green100, borderColor: Colors[theme].GreenColor, color: Colors[theme].GreenColor };
+    if (match >= 80) return { backgroundColor: Colors[theme].Blue100, borderColor: Colors[theme].BlueColor, color: Colors[theme].BlueColor };
+    if (match >= 70) return { backgroundColor: Colors[theme].Yellow100, borderColor: Colors[theme].YellowColor, color: Colors[theme].YellowColor };
+    return { backgroundColor: Colors[theme].Red100, borderColor: Colors[theme].RedColor, color: Colors[theme].RedColor };
 };
 
 interface InterviewItem {
@@ -49,20 +50,23 @@ interface InterviewItem {
     logo?: string;
 }
 
-const InterviewCard = ({ item, theme, styles }: { item: InterviewItem; theme: 'light' | 'dark'; styles: any }) => (
-    <View style={styles.card}>
-        <View style={styles.cardInfo}>
-            <Image source={{ uri: item.logo  }} style={styles.logo} />
-            <View>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.company}>{item.company}</Text>
+const InterviewCard =({ item, theme, styles }: { item: InterviewItem; theme: 'light' | 'dark'; styles: any }) => {
+    const matchColor = getMatchColor(item.match, theme);
+        return (
+            <View style={styles.card}>
+                <View style={styles.cardInfo}>
+                    <Image source={{ uri: item.logo }} style={styles.logo} />
+                    <View>
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text style={styles.company}>{item.company}</Text>
+                    </View>
+                </View>
+                <View style={[styles.matchTag, matchColor]}>
+                    <Text style={[styles.matchText, { color: matchColor.color }]}>Match - {item.match}%</Text>
+                </View>
             </View>
-        </View>
-        <View style={[styles.matchTag, getMatchColor(item.match, theme)]}>
-            <Text style={styles.matchText}>Match - {item.match}%</Text>
-        </View>
-    </View>
-);
+   );
+};
 
 export default function InterviewsScreen() {
     const router = useRouter();
@@ -102,20 +106,12 @@ export default function InterviewsScreen() {
         <View >
             <Stack.Screen options={{ title: 'Interviwes' }} />
             <View style={styles.dashContainer}>
-                <HeaderComponent />
+                <HeaderComponent title='Interview'/>
             </View>
                 <View style={styles.container}>
                     {/* Profile Status Bar */}
-                    <View style={styles.profileContainer}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>  
-                            <Text style={styles.profileText}>Complete your profile</Text>
-                            <Button style={styles.button}  title="Update Profile" color='yellow' variant='outline' onPress={() => router.push('/profile')} />
-                       </View>
-                        <Text style={styles.matchText}>75% Completed</Text>
-                        <View style={styles.progressBarContainer}>
-                            <View style={styles.progressBar} />
-                        </View>
-                    </View>
+                    <UpdateProfile />
+                    {/* Tabs */}
                     <View style={styles.tabContainer}>
                     {/* Tabs */}
                     <View style={styles.tabs}>
@@ -156,7 +152,6 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         position: 'absolute',
         borderBottomWidth: 1,
         borderColor: Colors[theme].BorderColor,
-      
     },
     container: {
         padding: 16,

@@ -1,69 +1,65 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import { useColorScheme } from 'react-native';
 import { Colors } from '../constants/Colors';
-import Svg, { Path } from 'react-native-svg';
 
+// Define the User type
 interface User {
+    photo: string;
+    name: string;
+    email: string;
+    role: string;
+}
+
+interface MenuProps {
     user: User;
     isOpen: boolean;
     toggleNav: () => void;
     role: string;
 }
 
-const Menu = ({ isOpen }: { user: User, isOpen: boolean }) => {
+const Menu = ({ isOpen, toggleNav, role }: MenuProps) => {
     const router = useRouter();
     const colorScheme = useColorScheme();
     const styles = createStyles(colorScheme || 'dark', isOpen);
 
+    const handlePress = (route: '/dashboard' | '/interviews' | '/invitations' | '/profile' | '/start') => {
+        toggleNav();
+        router.push(route);
+    };
+
     return (
         <View>
             {/* Menu Section */}
-            <TouchableOpacity style={styles.menuItem} onPress={() => router.push('/dashboard')}>
-            <Icon name="arrow-back" size={24} color={Colors[colorScheme || 'light'].primary} />
-
-                <Text style={styles.menuItemText}>
-                    Dashboard
-                </Text>
+            <TouchableOpacity style={styles.menuItem} onPress={() => handlePress('/dashboard')}>
+                <Icon name="home" size={24} color={Colors[colorScheme || 'light'].textBody} />
+                <Text style={styles.menuItemText}>Dashboard</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem} onPress={() => router.push('/interviews')}>
-            <Icon name="arrow-back" size={24} color={Colors[colorScheme || 'light'].primary} />
-                <Text style={styles.menuItemText} >
-                    Interviews
-                </Text>
+            <TouchableOpacity style={styles.menuItem} onPress={() => handlePress('/interviews')}>
+                <Icon name="briefcase" size={24} color={Colors[colorScheme || 'light'].textBody} />
+                <Text style={styles.menuItemText}>Interviews</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem} >
-            <Icon name="arrow-back" size={24} color={Colors[colorScheme || 'light'].primary} onPress={() => router.push('/invitations')}/>
-
-                <Text style={styles.menuItemText}>
-                    Invitation
-                </Text>
+            <TouchableOpacity style={styles.menuItem} onPress={() => handlePress('/invitations')}>
+                <Icon name="mail" size={24} color={Colors[colorScheme || 'light'].textBody} />
+                <Text style={styles.menuItemText}>Invitations</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.menuItem} onPress={() => handlePress('/profile')}>
+                <Icon name="person" size={24} color={Colors[colorScheme || 'light'].textBody} />
+                <Text style={styles.menuItemText}>Profile</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.menuItem}>
-            <Icon name="arrow-back" size={24} color={Colors[colorScheme || 'light'].primary} onPress={() => router.push('/profile')}/>
-
-                <Text style={styles.menuItemText}>
-                    Profile
-                </Text>
+                <Icon name="settings" size={24} color={Colors[colorScheme || 'light'].textBody} />
+                <Text style={styles.menuItemText}>Setting</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem}>
-            <Icon name="arrow-back" size={24} color={Colors[colorScheme || 'light'].primary} />
-
-                <Text style={styles.menuItemText}>
-                    Setting
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem} onPress={() => router.push('/start')}>
-                <Text style={styles.menuItemText}>
-                    Logout
-                </Text>
+            <TouchableOpacity style={styles.menuItem} onPress={() => handlePress('/start')}>
+                <Icon name="log-out" size={24} color={Colors[colorScheme || 'light'].textBody} />
+                <Text style={styles.menuItemText}>Logout</Text>
             </TouchableOpacity>
         </View>
     );
 };
-
 
 const createStyles = (theme: 'light' | 'dark', isFocused: boolean) => StyleSheet.create({
     menuItem: {
@@ -81,9 +77,7 @@ const createStyles = (theme: 'light' | 'dark', isFocused: boolean) => StyleSheet
         color: Colors[theme].textBody,
         paddingLeft: 12,
     },
-    
 });
-
 
 export default Menu;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Modal, Image } from 'react-native';
 import { Colors } from '../constants/Colors';
 import { useColorScheme } from 'react-native';
-import Button from './button';
+import Button from './ui/button';
 
 interface CustomAlertBoxProps {
     visible: boolean;
