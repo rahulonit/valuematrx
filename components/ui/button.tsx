@@ -1,20 +1,23 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle, View } from 'react-native';
 import { Colors } from '../../constants/Colors';
 import { useColorScheme } from 'react-native';
+import { Ionicons } from "@expo/vector-icons";
 
 interface ButtonProps {
     title: string;
+    iconName?:string;
     onPress: () => void;
     textColor?: string;
     style?: ViewStyle;
     textStyle?: TextStyle;
     variant?: 'primary' | 'outline';
     size?: 'small' | 'medium' | 'large';
-    color?: 'green' | 'yellow' | 'red' | 'blue';
+    color?: 'green' | 'yellow' | 'red' | 'blue' | 'gray';
+    icon?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ title, onPress, color, textColor, style, textStyle, variant = 'primary', size = 'medium' }) => {
+const Button: React.FC<ButtonProps> = ({ title, onPress, color, textColor, style, textStyle, variant = 'primary', size = 'medium', icon = false, iconName }) => {
     const colorScheme = useColorScheme();
     const theme = colorScheme || 'light';
 
@@ -23,6 +26,11 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, color, textColor, style
     let textColorVariant = textColor || Colors[theme].white;
 
     switch (color) {
+        case 'gray':
+            backgroundColor = Colors[theme].GreyColor;
+            borderColor = Colors[theme].Grey500;
+            textColorVariant = textColor || Colors[theme].white;
+            break;
         case 'yellow':
             backgroundColor = Colors[theme].YellowColor;
             borderColor = Colors[theme].Yellow500;
@@ -46,36 +54,44 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, color, textColor, style
             break;
     }
 
-    if (variant === 'outline') 
+    if (variant === 'outline')
         switch (color) {
-        case 'yellow':
-            backgroundColor = Colors[theme].Yellow100;
-            borderColor = Colors[theme].Yellow500;
-            textColorVariant = textColor || Colors[theme].YellowColor;
-            break;
-        case 'red':
-            backgroundColor = Colors[theme].Red100;
-            borderColor = Colors[theme].Red500;
-            textColorVariant = textColor || Colors[theme].RedColor;
-            break;
-        case 'blue':
-            backgroundColor = Colors[theme].Blue100;
-            borderColor = Colors[theme].Blue500;
-            textColorVariant = textColor || Colors[theme].BlueColor;
-            break;
-        case 'green':
-        default:
-            backgroundColor = Colors[theme].Green100;
-            borderColor = Colors[theme].Green500;
-            textColorVariant = textColor || Colors[theme].GreenColor;
-            break;
-    }
+            case 'gray':
+                backgroundColor = Colors[theme].Grey100;
+                borderColor = Colors[theme].Grey500;
+                textColorVariant = textColor || Colors[theme].GreyColor;
+                break;
+            case 'yellow':
+                backgroundColor = Colors[theme].Yellow100;
+                borderColor = Colors[theme].Yellow500;
+                textColorVariant = textColor || Colors[theme].YellowColor;
+                break;
+            case 'red':
+                backgroundColor = Colors[theme].Red100;
+                borderColor = Colors[theme].Red500;
+                textColorVariant = textColor || Colors[theme].RedColor;
+                break;
+            case 'blue':
+                backgroundColor = Colors[theme].Blue100;
+                borderColor = Colors[theme].Blue500;
+                textColorVariant = textColor || Colors[theme].BlueColor;
+                break;
+            case 'green':
+            default:
+                backgroundColor = Colors[theme].Green100;
+                borderColor = Colors[theme].Green500;
+                textColorVariant = textColor || Colors[theme].GreenColor;
+                break;
+        }
 
     const sizeStyles = getSizeStyles(size);
 
     return (
         <TouchableOpacity style={[styles.button, { backgroundColor, borderColor }, sizeStyles.button, style]} onPress={onPress}>
-            <Text style={[styles.buttonText, { color: textColorVariant }, sizeStyles.buttonText, textStyle]}>{title}</Text>
+            <View style={styles.content}>
+                {icon && iconName && <Ionicons name={iconName as any} size={16} color={textColorVariant} style={styles.icon} />}
+                <Text style={[styles.buttonText, { color: textColorVariant }, sizeStyles.buttonText, textStyle]}>{title}</Text>
+            </View>
         </TouchableOpacity>
     );
 };
@@ -129,6 +145,13 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontWeight: '600',
+    },
+    content: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    icon: {
+        marginRight: 8,
     },
 });
 

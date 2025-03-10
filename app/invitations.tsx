@@ -4,7 +4,7 @@ import { useColorScheme } from 'react-native';
 import HeaderComponent from '@/components/ui/header';
 import { Stack, useRouter } from 'expo-router';
 import { Colors } from '@/constants/Colors';
-import UpdateProfile from '@/components/updateProfile';
+import UpdateProfile from '@/components/dashboard/updateProfile';
 
 
 const CognitiveandPsychometric = [
@@ -131,16 +131,10 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         padding: 16,
         paddingBottom: 40,
         gap: 16,
-        paddingTop: 140,
+        paddingTop: 120,
         height: '100%',
     },
     
-    tabContainer: {
-        borderRadius: 16,
-        overflow: 'hidden',
-        borderColor: Colors[theme].BorderColor,
-        borderWidth: 1,flex: 1, 
-    },  
     tabs: {
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -151,8 +145,6 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         borderTopRightRadius: 16,
         overflow: 'hidden',
         gap: 8,
-        
-        backgroundColor: Colors[theme].Background2,
     },
     tabButton: {
         flex: 1,
@@ -160,13 +152,25 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         borderTopRightRadius: 16,
         padding: 16,
         alignItems: 'center',
-        
-        justifyContent: 'center',
+        borderBottomWidth: 0,
+        borderWidth: 1,
+        borderColor: Colors[theme].BorderColor,
+        backgroundColor: Colors[theme].Background1,
     },
+
+    tabContainer: {
+        borderRadius: 16,
+        overflow: 'hidden',
+        borderColor: Colors[theme].BorderColor,
+        borderWidth: 1,
+        borderTopWidth: 0,
+        flex: 1, 
+    },  
+   
     activeTabButton: {
         flex: 1,
         padding: 16,
-        backgroundColor: Colors[theme].Green100,
+        backgroundColor:'transparent',
     },
     tabButtonText: {
         fontSize: 16,

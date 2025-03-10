@@ -4,7 +4,7 @@ import { useColorScheme } from 'react-native';
 import HeaderComponent from '@/components/ui/header';
 import { Stack, useRouter } from 'expo-router';
 import { Colors } from '@/constants/Colors';
-import UpdateProfile from '@/components/updateProfile';
+import UpdateProfile from '@/components/dashboard/updateProfile';
 
 const today = [
     { id: '1', title: 'Frontend Developer', company: 'Google', match: 95, logo: 'https://logo.clearbit.com/google.com' },
@@ -50,22 +50,22 @@ interface InterviewItem {
     logo?: string;
 }
 
-const InterviewCard =({ item, theme, styles }: { item: InterviewItem; theme: 'light' | 'dark'; styles: any }) => {
+const InterviewCard = ({ item, theme, styles }: { item: InterviewItem; theme: 'light' | 'dark'; styles: any }) => {
     const matchColor = getMatchColor(item.match, theme);
-        return (
-            <View style={styles.card}>
-                <View style={styles.cardInfo}>
-                    <Image source={{ uri: item.logo }} style={styles.logo} />
-                    <View>
-                        <Text style={styles.title}>{item.title}</Text>
-                        <Text style={styles.company}>{item.company}</Text>
-                    </View>
-                </View>
-                <View style={[styles.matchTag, matchColor]}>
-                    <Text style={[styles.matchText, { color: matchColor.color }]}>Match - {item.match}%</Text>
+    return (
+        <View style={styles.card}>
+            <View style={styles.cardInfo}>
+                <Image source={{ uri: item.logo }} style={styles.logo} />
+                <View>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Text style={styles.company}>{item.company}</Text>
                 </View>
             </View>
-   );
+            <View style={[styles.matchTag, matchColor]}>
+                <Text style={[styles.matchText, { color: matchColor.color }]}>Match - {item.match}%</Text>
+            </View>
+        </View>
+    );
 };
 
 export default function InterviewsScreen() {
@@ -83,7 +83,7 @@ export default function InterviewsScreen() {
             contentContainerStyle={styles.listContainer}
         />
     ), [today, theme, styles]);
-    
+
     const TabContentScheduled = useMemo(() => (
         <FlatList
             data={scheduled}
@@ -92,7 +92,7 @@ export default function InterviewsScreen() {
             contentContainerStyle={styles.listContainer}
         />
     ), [scheduled, theme, styles]);
-    
+
     const TabContentPending = useMemo(() => (
         <FlatList
             data={pending}
@@ -106,13 +106,13 @@ export default function InterviewsScreen() {
         <View >
             <Stack.Screen options={{ title: 'Interviwes' }} />
             <View style={styles.dashContainer}>
-                <HeaderComponent title='Interview'/>
+                <HeaderComponent title='Interview' />
             </View>
-                <View style={styles.container}>
-                    {/* Profile Status Bar */}
-                    <UpdateProfile />
-                    {/* Tabs */}
-                    <View style={styles.tabContainer}>
+            <View style={styles.container}>
+                {/* Profile Status Bar */}
+                <UpdateProfile />
+                {/* Tabs */}
+                <View style={styles.tabContainer}>
                     {/* Tabs */}
                     <View style={styles.tabs}>
                         <TouchableOpacity
@@ -139,8 +139,8 @@ export default function InterviewsScreen() {
                     {selectedTab === 'Today' && TabContentToday}
                     {selectedTab === 'Scheduled' && TabContentScheduled}
                     {selectedTab === 'Pending' && TabContentPending}
-                    </View>
                 </View>
+            </View>
         </View>
     );
 }
@@ -157,7 +157,7 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         padding: 16,
         paddingBottom: 40,
         gap: 16,
-        paddingTop: 140,
+        paddingTop: 120,
         height: '100%',
     },
     profileContainer: {
@@ -179,7 +179,7 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         alignSelf: 'flex-end',
         backgroundColor: Colors[theme].GreenColor,
     },
-    
+
     progressBarContainer: {
         marginTop: 8,
         height: 6,
@@ -192,9 +192,6 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         borderRadius: 3,
         backgroundColor: Colors[theme].GreenColor,
     },
-    tabContainer: {
-        flex: 1, 
-    },  
     tabs: {
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -206,6 +203,7 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         overflow: 'hidden',
         gap: 8,
     },
+    
     tabButton: {
         flex: 1,
         borderTopLeftRadius: 16,
@@ -215,11 +213,22 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
         borderBottomWidth: 0,
         borderWidth: 1,
         borderColor: Colors[theme].BorderColor,
+        backgroundColor: Colors[theme].Background1,
     },
+
+    tabContainer: {
+        borderRadius: 16,
+        overflow: 'hidden',
+        borderColor: Colors[theme].BorderColor,
+        borderWidth: 1,
+        borderTopWidth: 0,
+        flex: 1, 
+    },  
+   
     activeTabButton: {
         flex: 1,
         padding: 16,
-        backgroundColor: Colors[theme].Background1,
+        backgroundColor:'transparent',
     },
     tabButtonText: {
         fontSize: 16,
@@ -230,15 +239,13 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
     },
     listContainer: {
         gap: 8,
+        borderColor: Colors[theme].BorderColor,
         width: '100%',
         borderTopWidth: 0,
         borderRadius: 16,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
         padding: 12,
-        borderColor: Colors[theme].BorderColor,
-        borderWidth: 1,
-        backgroundColor: Colors[theme].Background1,
     },
     card: {
         borderRadius: 12,

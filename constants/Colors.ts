@@ -16,11 +16,13 @@ export const Colors = {
     Background2: '#ffffff',
     BorderColor: '#e6e6e6',
 
+
     //Typography
     textColor: '#161616',
     textHeading: '#474747',
-    textSub: '#8d9191',
+    textSub: "#6b7280",
     textBody: '#5e5e5e',
+
 
     // Color GREEN or Success or Primary
     GreenColor: '#228276',
@@ -35,6 +37,7 @@ export const Colors = {
     Green900: '#0b2b27',
     Green1000: '#071a18',
 
+
     // Color BLUE  or info
     Blue100: 'rgba(75 77 237 / 0.15)',
     Blue200: 'rgba(75 77 237 / 0.32)',
@@ -47,7 +50,6 @@ export const Colors = {
     Blue800: '#262777',
     Blue900: '#191a4f',
     Blue1000: '#0f0f2f',
-    
 
 
     // Color RED or Error or Danger
@@ -63,6 +65,7 @@ export const Colors = {
     Red900: '#47201e',
     Red1000: '#2b1312',
 
+
     // Color YELLOW or Warning
     Yellow100: 'rgba(226 153 54 / 0.15)',
     Yellow200: 'rgba(226 153 54 / 0.32)',
@@ -76,6 +79,7 @@ export const Colors = {
     Yellow900: '#4b3312',
     Yellow1000: '#2d1f0b',
 
+
     // Color GREY
     Grey100: 'rgba(106 106 106 / 0.15)',
     Grey200: 'rgba(106 106 106 / 0.32)',
@@ -88,6 +92,7 @@ export const Colors = {
     Grey800: '#353535',
     Grey900: '#232323',
     Grey1000: '#151515',
+
 
     // Color LIGHT GREEN
     LightGreen100: 'rgba(97 180 102 / 0.15)',
@@ -103,8 +108,6 @@ export const Colors = {
     LightGreen1000: '#132414',
   },
   dark: {
-
-
     primary: '#228276',
     stroke: '#d1d1d1',
     white: '#ffffff',
@@ -113,11 +116,13 @@ export const Colors = {
     Background2: '#1c1c1c',
     BorderColor: '#292929',
 
+
     //Typography
     textColor: '#eeeeee',
     textHeading: '#dddddd',
-    textSub: '#8d9191',
+    textSub: "#6b7280",
     textBody: '#bdbdbd',
+
 
     // Color GREEN or Success or Primary
     GreenColor: '#228276',
@@ -132,6 +137,7 @@ export const Colors = {
     Green900: '#0b2b27',
     Green1000: '#071a18',
 
+
     // Color BLUE
     Blue100: 'rgba(75 77 237 / 0.15)',
     Blue200: 'rgba(75 77 237 / 0.32)',
@@ -144,7 +150,8 @@ export const Colors = {
     Blue800: '#262777',
     Blue900: '#191a4f',
     Blue1000: '#0f0f2f',
-    
+
+
     // Color RED or Error or Danger
     Red100: 'rgba(214 97 90 / 0.15)',
     Red200: 'rgba(214 97 90 / 0.32)',
@@ -157,6 +164,7 @@ export const Colors = {
     Red800: '#6b312d',
     Red900: '#47201e',
     Red1000: '#2b1312',
+
 
     // Color YELLOW or Warning
     Yellow100: 'rgba(226 153 54 / 0.15)',
@@ -171,6 +179,7 @@ export const Colors = {
     Yellow900: '#4b3312',
     Yellow1000: '#2d1f0b',
 
+
     // Color GREY
     Grey100: 'rgba(106 106 106 / 0.15)',
     Grey200: 'rgba(106 106 106 / 0.32)',
@@ -184,6 +193,7 @@ export const Colors = {
     Grey900: '#232323',
     Grey1000: '#151515',
 
+    
     // Color LIGHT GREEN
     LightGreen100: 'rgba(97 180 102 / 0.15)',
     LightGreen200: 'rgba(97 180 102 / 0.32)',

@@ -3,8 +3,8 @@ import { useRouter } from 'expo-router';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { CheckCircle, AlertCircle } from "lucide-react-native";
 import { useColorScheme } from 'react-native';
-import { Colors } from '../constants/Colors';
-import Button from './ui/button';
+import { Colors } from '../../constants/Colors';
+import Button from '../ui/button';
 
 const SuggestionUpdate = () => {
     const router = useRouter();
@@ -100,7 +100,7 @@ const createStyles = (theme: 'light' | 'dark') => StyleSheet.create({
     statusBar: {
         width: "100%",
         height: 8,
-        backgroundColor: Colors[theme].Background1,
+        backgroundColor: Colors[theme].Grey200,
         borderRadius: 5,
         overflow: "hidden",
     },

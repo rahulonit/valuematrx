@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native
 import { Briefcase, Calendar, MapPin } from "lucide-react-native";
 import { useColorScheme } from 'react-native';
 import Button from '@/components/ui/button';
-import { Colors } from '../constants/Colors';
+import { Colors } from '../../constants/Colors';
 import { useRouter } from 'expo-router';
 
 const redirectSignIn = () => {

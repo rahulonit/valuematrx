@@ -5,7 +5,7 @@ import { useRouter } from 'expo-router';
 import { useColorScheme } from 'react-native';
 import { Colors } from '../constants/Colors';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import Menu from './menu';
+import Menu from './ui/menu';
 import { Icon } from "react-native-elements";
 import { BlurView } from 'expo-blur';
 

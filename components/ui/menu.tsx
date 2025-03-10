@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import { useColorScheme } from 'react-native';
-import { Colors } from '../constants/Colors';
+import { Colors } from '../../constants/Colors';
 
 // Define the User type
 interface User {
@@ -25,7 +25,7 @@ const Menu = ({ isOpen, toggleNav, role }: MenuProps) => {
     const colorScheme = useColorScheme();
     const styles = createStyles(colorScheme || 'dark', isOpen);
 
-    const handlePress = (route: '/dashboard' | '/interviews' | '/invitations' | '/profile' | '/start') => {
+    const handlePress = (route: '/dashboard' | '/interviews' | '/invitations' | '/profile' | '/start' | '/appSetting') => {
         toggleNav();
         router.push(route);
     };
@@ -49,9 +49,9 @@ const Menu = ({ isOpen, toggleNav, role }: MenuProps) => {
                 <Icon name="person" size={24} color={Colors[colorScheme || 'light'].textBody} />
                 <Text style={styles.menuItemText}>Profile</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity style={styles.menuItem} onPress={() => handlePress('/appSetting')}>
                 <Icon name="settings" size={24} color={Colors[colorScheme || 'light'].textBody} />
-                <Text style={styles.menuItemText}>Setting</Text>
+                <Text style={styles.menuItemText}>App Setting</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.menuItem} onPress={() => handlePress('/start')}>
                 <Icon name="log-out" size={24} color={Colors[colorScheme || 'light'].textBody} />

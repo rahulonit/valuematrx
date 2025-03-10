@@ -2,7 +2,7 @@ import React from 'react';
 import { Video, Clock, Smile, LogIn } from "lucide-react-native";
 import { StyleSheet, View, Text } from 'react-native';
 import { useColorScheme } from 'react-native';
-import { Colors } from '../constants/Colors';
+import { Colors } from '../../constants/Colors';
 
 const QuickViewCard = ({ title, count, icon: IconComponent, color }: { title: string, count: string, icon: React.ComponentType<any>, color: { light: string, dark: string, text: string, icon: string } }) => {
     const colorScheme = useColorScheme();

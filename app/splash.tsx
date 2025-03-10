@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-// import LottieView from 'lottie-react-native';
+import LottieView from 'lottie-react-native';
 
 export default function SplashScreen() {
   return (
     <View style={styles.container}>
-      {/* <LottieView
+      <LottieView
         source={require('../assets/loader.json')} // Update the path to your JSON file
         autoPlay
         loop
         style={styles.loader}
-      /> */}
+      />
       <Text style={styles.text}>Loading...</Text>
     </View>
   );

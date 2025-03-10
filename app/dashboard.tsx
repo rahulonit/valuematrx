@@ -3,13 +3,13 @@ import { Stack } from 'expo-router';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { useColorScheme } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import QuickView from '@/components/quickView';
-import SuggestionUpdate from '@/components/suggestionUpdate';
-import TodayInterview from '@/components/todayCard';
-import PendingInvites from '@/components/penddingCard';
+import QuickView from '@/components/dashboard/quickView';
+import SuggestionUpdate from '@/components/dashboard/suggestionUpdate';
+import TodayInterview from '@/components/dashboard/todayCard';
+import PendingInvites from '@/components/dashboard/penddingCard';
 import HeaderComponent from '@/components/ui/header';
 import CognitiveInvites from '@/components/cognitiveInvites';
-import ScheduleInterview from '@/components/scheduleInterview';
+import ScheduleInterview from '@/components/dashboard/scheduleInterview';
 
 
 
